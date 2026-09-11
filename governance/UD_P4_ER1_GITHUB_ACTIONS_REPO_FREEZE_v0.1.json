@@ -1,0 +1,16 @@
+{
+  "address_lane_scoring_present": false,
+  "artifact": "UD_P4_ER1_GITHUB_ACTIONS_REPO_FREEZE_v0.1",
+  "controller_sha256": "775c6547a4483bbc5942abe70730cdf16a8d785b965b75f1ec930d411d969f1d",
+  "expected_receipts": 18,
+  "expected_sequence": "1..18",
+  "external_run_status": "OPEN until GitHub Actions executes the repository",
+  "hidden_theta_target_present": false,
+  "p4_source_sha256": "fb9111259260a9fe8f36d14fb9ab036e6e10a265c0e2b325565a538902623f49",
+  "physical_promotion": 0,
+  "runner_sha256": "3864d634cc0f2a911ac03b85ab07f32e47f514e2e47ff50b99078e48060c8f6c",
+  "source_plan_sha256": "7a328efb4ed3a732b2fdfa985053c87ff0dd1296e2b0bea7fd045e74eadbf9b6",
+  "status": "AUTO_LOCK_PRE_EXTERNAL_RUN",
+  "verifier_sha256": "c84dd10d4e9be7796e0589f1bf3d6bb184830ea42c4b041f9257f7d9ce3a7d9e",
+  "workflow_sha256": "3663fde4b7a765ee6d82a1a0593610c32181d571015395a57082dcb8ddafb281"
+}

@@ -1,0 +1,57 @@
+name: UD P4-ER1 External BMv2 Receipt Run
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  p4-er1:
+    name: P4-ER1 source-only receipt acquisition
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out frozen repository
+        uses: actions/checkout@v4
+
+      - name: Record runner provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p results logs build preflight
+          {
+            echo "github_repository=${GITHUB_REPOSITORY}"
+            echo "github_sha=${GITHUB_SHA}"
+            echo "github_ref=${GITHUB_REF}"
+            echo "runner_os=${RUNNER_OS}"
+            echo "runner_arch=${RUNNER_ARCH}"
+            uname -a
+            docker version
+          } | tee results/GITHUB_RUNNER_PROVENANCE.txt
+
+      - name: Execute frozen P4-ER1 BMv2 acquisition
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash scripts/run_github_bmv2.sh
+
+      - name: Upload complete P4-ER1 evidence bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: UD_P4_ER1_EXTERNAL_RECEIPT_BUNDLE
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            results/**
+            logs/**
+            build/**
+            preflight/**
+            config/P4_ER1_SOURCE_PLAN_v0.1.json
+            p4/p4er1_receipt_loopback.p4
+            controller/p4er1_controller.py
+            scripts/run_github_bmv2.sh
+            scripts/verify_external_corpus.py
+            governance/**

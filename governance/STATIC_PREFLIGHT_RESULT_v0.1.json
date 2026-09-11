@@ -1,0 +1,10 @@
+{
+  "P4_metadata_contract_static": "PASS",
+  "bash_syntax": "PASS",
+  "external_execution": "NOT_RUN_HERE",
+  "physical_promotion": 0,
+  "python_syntax": "PASS",
+  "source_plan": "PASS",
+  "status": "STATIC_PREFLIGHT_PASS",
+  "workflow_yaml": "PASS"
+}
