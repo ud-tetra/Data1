@@ -14,7 +14,14 @@ BMV2_IMAGE="${BMV2_IMAGE:-p4lang/behavioral-model:latest}"
 P4RTSH_IMAGE="${P4RTSH_IMAGE:-p4lang/p4runtime-sh:latest}"
 PLATFORM="${PLATFORM:-linux/amd64}"
 
+capture_switch_log() {
+  if docker inspect "$SW" >/dev/null 2>&1; then
+    docker logs "$SW" > logs/simple_switch_grpc.log 2>&1 || true
+  fi
+}
+
 cleanup() {
+  capture_switch_log
   docker rm -f "$SW" >/dev/null 2>&1 || true
   docker network rm "$NET" >/dev/null 2>&1 || true
 }
@@ -45,6 +52,9 @@ docker pull --platform "$PLATFORM" "$P4RTSH_IMAGE"
 } | tee results/RUNTIME_IMAGES.txt
 
 echo "Compiling P4_16 source..."
+rm -rf build/p4c_out
+mkdir -p build/p4c_out
+
 docker run --rm --platform "$PLATFORM" \
   --mount "type=bind,source=$ROOT,target=/work" \
   -w /work \
@@ -52,8 +62,19 @@ docker run --rm --platform "$PLATFORM" \
   p4c --target bmv2 --arch v1model --std p4-16 \
     --p4runtime-files build/p4er1.p4info.txt \
     --p4runtime-format text \
-    -o build/p4er1.json \
+    -o build/p4c_out \
     p4/p4er1_receipt_loopback.p4
+
+echo "Compiled build files:"
+find build -maxdepth 3 -type f -print | sort | tee results/COMPILED_BUILD_FILES.txt
+
+BMV2_JSON_REL="$(find build/p4c_out -type f -name '*.json' | sort | head -n 1 || true)"
+if [[ -z "${BMV2_JSON_REL}" || ! -f "${BMV2_JSON_REL}" ]]; then
+  echo "FAIL_CLOSED: could not resolve compiled BMv2 JSON file." >&2
+  exit 21
+fi
+
+echo "Resolved BMv2 device config: ${BMV2_JSON_REL}" | tee results/RESOLVED_BMV2_JSON_PATH.txt
 
 echo "Starting BMv2 simple_switch_grpc..."
 docker run -d \
@@ -67,13 +88,19 @@ docker run -d \
 
 sleep 3
 
+if ! docker ps --filter "name=^/${SW}$" --filter "status=running" --format '{{.Names}}' | grep -qx "$SW"; then
+  echo "FAIL_CLOSED: BMv2 switch container is not running." >&2
+  capture_switch_log
+  exit 22
+fi
+
 echo "Executing P4Runtime controller / collector..."
 CONTROLLER_CMD="source /p4runtime-sh/venv/bin/activate && \
 python3 /work/controller/p4er1_controller.py \
 --grpc-addr ${SW}:9559 \
 --device-id 1 \
 --p4info /work/build/p4er1.p4info.txt \
---bmv2-json /work/build/p4er1.json \
+--bmv2-json /work/${BMV2_JSON_REL} \
 --plan /work/config/P4_ER1_SOURCE_PLAN_v0.1.json \
 --out /work/results/P4_ER1_EXTERNAL_SOURCE_ONLY_RECEIPTS.jsonl \
 --manifest /work/results/P4_ER1_EXTERNAL_CORPUS_MANIFEST.json"
@@ -87,7 +114,7 @@ docker run --rm \
   "$P4RTSH_IMAGE" \
   -lc "$CONTROLLER_CMD"
 
-docker logs "$SW" > logs/simple_switch_grpc.log 2>&1 || true
+capture_switch_log
 
 python3 scripts/verify_external_corpus.py \
   results/P4_ER1_EXTERNAL_SOURCE_ONLY_RECEIPTS.jsonl \
