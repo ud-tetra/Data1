@@ -1,6 +1,6 @@
 # Run UD P4-ER1 Free on GitHub Actions — Click by Click
 
-**Package:** `UD_P4_ER1_GITHUB_ACTIONS_REPO_v0.1.zip`  
+**Package:** `UD_P4_ER1_GITHUB_ACTIONS_REPO_v0.2.zip`  
 **Required locally:** only a web browser and a free GitHub account  
 **Docker on your Windows PC:** not required  
 **Physical promotion:** `0`
@@ -145,3 +145,21 @@ A PASS therefore closes the *external operational receipt acquisition* gate for 
 It does **not** prove that network packets are Theta objects or physical UD carriers.
 
 **Physical promotion remains 0.**
+
+
+## v0.2 repair after the first external run
+
+The first external run reached the P4Runtime configuration stage and exposed a build-path defect. p4c produced the BMv2 JSON inside an output directory, but v0.1 passed that directory to the controller instead of the JSON file.
+
+v0.2 fixes only that executable path.
+
+If your repository already contains v0.1, the easiest update is:
+
+1. extract `UD_P4_ER1_GITHUB_ACTIONS_PATCH_v0.2.zip`;
+2. in GitHub choose **Add file → Upload files**;
+3. drag the patch contents into the repository root;
+4. commit with message:
+   `Repair P4-ER1 BMv2 device config path v0.2`
+5. return to **Actions** and run **UD P4-ER1 External BMv2 Receipt Run** again.
+
+The source plan and receipt law are unchanged.

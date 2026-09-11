@@ -1,0 +1,6 @@
+deliberate_output_dir PASS
+json_discovery PASS
+exact_json_to_controller PASS
+missing_json_hold PASS
+exit_log_capture PASS
+RUNNER_V02_STATIC_PASS

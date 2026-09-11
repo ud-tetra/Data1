@@ -1,39 +1,23 @@
-# UD P4-ER1 — GitHub Actions External Runner
+# UD P4-ER1 — GitHub Actions External Runner v0.2
 
-This repository is a frozen operational harness for producing an externally instantiated MP-1R identity/provenance receipt corpus using:
+This release repairs the BMv2 device-config path exposed by the first external run.
 
-`P4Runtime PacketOut → BMv2 simple_switch_grpc → P4Runtime PacketIn`
+The uploaded run proved that p4c created:
 
-Start with:
+`build/p4er1.json/p4er1_receipt_loopback.json`
 
-**`RUN_ON_GITHUB_ACTIONS_CLICK_BY_CLICK.md`**
+while v0.1 passed:
 
-No Docker installation is required on the user's Windows machine.
+`/work/build/p4er1.json`
 
-## Frozen source scope
+to the P4Runtime configuration stage.
 
-- six seam transactions;
-- three A/B/C addresses per seam;
-- 18 ordered source-only records;
-- all seven MP-1R event classes represented;
-- no hidden Theta endpoint in the source plan.
+v0.2 compiles into `build/p4c_out`, resolves the actual compiled JSON file, and passes that exact file to the controller.
 
-## PASS conditions
+No source-plan or scientific-predictor rule changed.
 
-The cloud run must return:
+Run instructions:
 
-- 18 receipts;
-- event sequence exactly `1..18`;
-- exact source-field preservation through BMv2;
-- zero sequence gaps;
-- valid append-only SHA-256 hash chain.
+`RUN_ON_GITHUB_ACTIONS_CLICK_BY_CLICK.md`
 
-The workflow uploads the evidence as:
-
-`UD_P4_ER1_EXTERNAL_RECEIPT_BUNDLE`
-
-## Governance
-
-This is an operational provenance-carrier test. It does not identify Ethernet packets, BMv2 state, or controller metadata with a physical UD carrier.
-
-Physical promotion: **0**.
+Physical promotion: 0.

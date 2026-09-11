@@ -1,0 +1,22 @@
+{
+  "artifact": "UD_P4_ER1_GITHUB_ACTIONS_RUNNER_REPAIR_v0.2",
+  "evidence": {
+    "compiled_device_config": "build/p4er1.json/p4er1_receipt_loopback.json",
+    "mismatch": "supplied path is directory, not device-config JSON file",
+    "v0.1_supplied_path": "/work/build/p4er1.json"
+  },
+  "external_corpus_status": "OPEN pending rerun",
+  "failed_run_repository": "ud-tetra/Data1",
+  "failed_run_sha": "e0c85dc6c496d3c3ec34dfd98a1a1dabba495655",
+  "observed_failure": "CRITICAL:root:Error when setting config",
+  "physical_promotion": 0,
+  "repair": {
+    "always_capture_bmv2_log": true,
+    "compile_output_directory": "build/p4c_out",
+    "fail_closed_if_missing": true,
+    "resolution": "find exact compiled *.json after p4c completes"
+  },
+  "scientific_predictor_changed": false,
+  "source_plan_changed": false,
+  "status": "APPEND_ONLY_EXECUTION_REPAIR"
+}
