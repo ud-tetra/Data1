@@ -1,0 +1,4 @@
+object,code,protected_logicals,distance,role,loss_strategy,mqm_claim
+Sqale preparation block,"[[8,3,3]]",3,3,state preparation / memory baseline,"prepare in distance-3, downstream switch to [[8,3,2]]","baseline kept as theirs; no rate claim"
+Sqale downstream block,"[[8,3,2]]",3,2,downstream IQP logical operations,"known one-atom loss reconstructed from parity; yield/error tradeoff","Gate-1 baseline"
+MQM repaired block,"[[8,1,3,3]] subsystem","1 (+3 gauge)","3 dressed",typed-loss candidate,"known erasure + explicit syndrome receipt; CORRECT/HOLD/LOGICAL_ERROR","receipt value hypothesis, not more logical qubits"
