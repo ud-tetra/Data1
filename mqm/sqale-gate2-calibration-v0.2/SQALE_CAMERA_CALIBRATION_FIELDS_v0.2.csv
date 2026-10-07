@@ -1,0 +1,15 @@
+field,public_value,status,source_or_owner,why_needed
+tweezer/site pitch,6 um,PUBLIC,Rines et al. architecture paper,Sets physical scale only
+block size,8 atoms,PUBLIC,Infleqtion Sept 2026 30L report,Matches one logical block
+encoding,"[[8,3,3]] prep -> [[8,3,2]] downstream",PUBLIC,Infleqtion Sept 2026 30L report,Baseline context
+loss correction,"missing X outcome reconstructed in software",PUBLIC,Infleqtion Sept 2026 30L report,Baseline decision path
+extra-bit-flip caveat,"can miscorrect inferred lost qubit",PUBLIC,Rines et al. architecture paper,Motivates calibration comparison
+occupied photon-count distribution,UNKNOWN,REQUEST,Sqale calibration,Shot-noise likelihood
+empty/background photon-count distribution,UNKNOWN,REQUEST,Sqale calibration,False-present/false-loss likelihood
+PSF/localization covariance,UNKNOWN,REQUEST,Sqale calibration,Projected-pair resolvability
+affine drift covariance + temporal correlation,UNKNOWN,REQUEST,Sqale calibration,Correlated imaging distortion
+common-mode bad-frame probability,UNKNOWN,REQUEST,Sqale calibration,HOLD channel
+second independent view or equivalent depth observation,UNKNOWN,GO_NO_GO,Sqale hardware,Required before Gate 2 continues
+relative view-axis calibration,UNKNOWN,REQUEST,Sqale calibration,Fuse 3D coordinate identity
+inter-view timing + image latency,UNKNOWN,REQUEST,Sqale hardware,Latency and motion cost
+loss-labeled calibration frames,UNKNOWN,REQUEST,Sqale data,Calibrated confusion matrix
