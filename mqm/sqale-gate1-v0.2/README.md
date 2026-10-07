@@ -1,3 +1,19 @@
+# HISTORICAL RELEASE — see v0.3 internal algebra audit
+
+This v0.2 runnable block release is retained for provenance.
+
+**Current Gate-1 ruling:** internal algebra audit only. The universal direct Sqale post-loss receipt is not a hardware result.
+
+Current record:
+`mqm/sqale-gate1-v0.3-internal-audit/`
+
+Gate 2 is maintained separately as a calibration-data request:
+`mqm/sqale-gate2-calibration-v0.2/`
+
+Do not package Gate 1 and Gate 2 as one hardware result.
+
+---
+
 # IMPORTANT v0.3 SCOPE REPAIR
 
 **Gate 1 direct post-loss receipt is now FROZEN / NO-GO.**
