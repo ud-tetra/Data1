@@ -1,0 +1,34 @@
+{
+  "status": "DECLARED_SIMULATION_MODEL_NOT_SQALE_CALIBRATION",
+  "views": {"A": "(1,0,0)", "B": "(0,2,3)/sqrt(13)"},
+  "state_classes": "NO_LOSS or exactly one lost site among q1..q8",
+  "psf": "2D Gaussian, matched-filter sigma = 0.25 a",
+  "shot_noise": "Poisson; 100 detected signal-count equivalents per isolated occupied site, +1 background count per matched-filter channel",
+  "affine_drift": {
+    "translation_RMS": "0.04 a per image axis",
+    "shear_RMS": "0.02",
+    "scale_RMS": "0.01",
+    "rotation_RMS_deg": "1.0"
+  },
+  "camera_failure": {
+    "shared_common_mode_probability": 0.002,
+    "additional_independent_per_view_probability": 0.008,
+    "failure_detection": "flag view failed when total matched-filter counts < 0.25*100*7"
+  },
+  "decoder": {
+    "hypotheses": 9,
+    "classes": ["NO_LOSS","LOSS_Q1","LOSS_Q2","LOSS_Q3","LOSS_Q4","LOSS_Q5","LOSS_Q6","LOSS_Q7","LOSS_Q8"],
+    "confidence": "best-vs-second Poisson deviance gap >= 9, else AMBIGUOUS",
+    "policy": "failed camera discarded; deterministic overlap never mapped directly to loss"
+  },
+  "sampling": {
+    "class_balance": "equal trials for all 9 physical states",
+    "nominal_trials_per_class": 5000,
+    "seed": 20261007
+  },
+  "engineering_acceptance_not_physical_claim": {
+    "wrong_certificate_rate_max": 0.001,
+    "ambiguous_rate_max": 0.02,
+    "dual_must_improve_accepted_fraction_vs_best_single_by": 0.10
+  }
+}
