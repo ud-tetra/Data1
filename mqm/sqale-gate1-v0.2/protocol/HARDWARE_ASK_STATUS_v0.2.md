@@ -1,43 +1,25 @@
-# Gate 4 hardware-ask status — NOT YET READY TO SEND
+# Gate 4 hardware-ask status — WITHDRAWN / HOLD
 
-**Status:** OPEN / RESOURCE-COMPILE BLOCKER  
+**Status:** FROZEN BY GATE-1 RECEIPT NO-GO  
 **Physical promotion:** 0
 
-The public algebraic Gate-1 package is ready.
+Do **not** request the eight-site hardware reproduction slot yet.
 
-The external **eight-site reproduction request is not yet ready to send** because the current MQM typed-loss result assumes access to a central-syndrome receipt. That receipt has not yet been compiled into a Sqale-native terminal circuit with frozen CZ/move/ancilla counts.
+The exact MQM one-erasure + one-extra-Pauli result assumes access to the full four-bit central syndrome after loss. For a physically missing atom, the central checks that avoid the lost site are insufficient: every loss location retains logical ambiguity.
 
-Do not hide that cost.
-
-## Current break-even target
-
-Using the public Sqale measurement-classification screen
-
-[
-p_m=(0.002+0.023)/2=0.0125,
-]
-
-the exploratory terminal model gives:
-- Sqale parity-reconstruction logical-X error after one known loss: about **8.43%**.
-- MQM stays below that value only while the effective syndrome-bit error is below about **2.69%**.
-
-This is not a hardware win.
-
-The public Sqale model also reports roughly:
-- CZ postselected fidelity 98.7%;
-- CZ single-qubit phase error 0.73%;
-- movement success 98%;
-- movement phase error 4.1%;
-- moved-atom identity fidelity 97.3%.
-
-A receipt that adds several CZs or shuttles can erase the algebraic gain.
+See:
+`POST_LOSS_CENTRAL_RECEIPT_NO_GO_v0.1_LOCK.md`
 
 ## Reopening condition
 
-Before requesting a reproduction slot, produce either:
-1. a Sqale-native eight-data-site destructive receipt requiring no hidden ancillas; or
-2. an explicit ancilla receipt circuit with every added atom, CZ, move, measurement, replay, and loss counted.
+The hardware ask may be restored only after an explicit physical mechanism closes the missing information, such as:
+- fresh pre-loss syndrome history;
+- validated gauge-history receipt;
+- an ancilla carrying information acquired before the atom disappeared;
+- another loss-aware circuit proven to distinguish the ambiguous classes.
 
-If neither beats the parity-reconstruction/postselection Pareto frontier, stop the Sqale branch.
+All added atoms, CZs, moves, latency, loss, measurements, and replay must be charged.
 
-No magic factory or heteronuclear sentinel belongs in the first ask.
+Until then, Gate 1 is stopped as requested.
+
+**External-facing lead moves to Gate 2: dual-view fluorescence certification under a declared imaging-noise model.**
