@@ -1,0 +1,9 @@
+lost_site,accessible_nonidentity_center_elements,accessible_center_rank,independent_checks,syndrome_bins,ambiguous_bins,full_survivor_gauge_elements,full_survivor_gauge_rank,full_gauge_signature_bins,full_gauge_ambiguous_bins,four_commuting_check_reopen
+1,7,3,"IIIZZYYI IIIZXXIZ IIIYIYZZ",8,6,255,8,16,0,TRUE
+2,7,3,"IIIZZYYI IIIZXXIZ IIIYIYZZ",8,6,255,8,16,0,TRUE
+3,7,3,"IIIZZYYI IIIZXXIZ IIIYIYZZ",8,6,255,8,16,0,TRUE
+4,3,2,"XXXIXYXY XXXIZXZX",4,3,255,8,15,3,FALSE
+5,3,2,"XXXZIZXX IIIYIYZZ",4,3,255,8,15,3,FALSE
+6,3,2,"XXXYXIYX XXXZYIZY",4,3,255,8,15,3,FALSE
+7,3,2,"IIIZXXIZ XXXXYYIX",4,3,255,8,15,3,FALSE
+8,3,2,"IIIZZYYI IIIXXZZI",4,3,255,8,16,6,FALSE
