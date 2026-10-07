@@ -1,0 +1,8 @@
+{
+  "4": {"error_A":"X5","error_B":"Y6","difference":"IIIIXYII","logical_class":2},
+  "5": {"status":"stored witness in local v0.1 audit package; logically inequivalent full-survivor-gauge collision"},
+  "6": {"status":"stored witness in local v0.1 audit package; logically inequivalent full-survivor-gauge collision"},
+  "7": {"status":"stored witness in local v0.1 audit package; logically inequivalent full-survivor-gauge collision"},
+  "8": {"status":"stored witness in local v0.1 audit package; logically inequivalent full-survivor-gauge collision"},
+  "scope_note":"Site-4 exact pair is reproduced here. Sites 5-8 are retained as witness existence statements pending byte-for-byte publication of the local audit JSON."
+}
