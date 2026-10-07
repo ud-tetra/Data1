@@ -1,0 +1,28 @@
+{
+  "status": "PUBLIC_SQALE_INTERIM_MODEL / EXPLORATORY_FOR_30L_GATE1",
+  "source": {
+    "paper": "Rines et al., Demonstration of a Logical Architecture Uniting Motion and In-Place Entanglement, arXiv:2509.13247v2",
+    "url": "https://arxiv.org/abs/2509.13247",
+    "note": "This predates the Sept. 2026 30-logical-qubit post, which says fuller methods/resource counts will be published later."
+  },
+  "parameters": {
+    "state_prep_fidelity": 0.979,
+    "CZ_postselected_fidelity": 0.987,
+    "CZ_single_qubit_phase_error_probability": 0.0073,
+    "global_rotation_fidelity": 0.9996,
+    "local_RZ_fidelity": 0.998,
+    "measurement_postselected_fidelity": 0.987,
+    "measurement_eps0": 0.002,
+    "measurement_eps1": 0.023,
+    "move_transfer_success": 0.980,
+    "move_duration_ms": 7.0,
+    "move_identity_fidelity_moved_atom_postselected": 0.973,
+    "move_identity_fidelity_spectator": 0.983,
+    "move_phase_error_probability": 0.041,
+    "spectator_phase_error_probability": 0.026
+  },
+  "governance": {
+    "confirmatory_status": "BLOCKED until 30L paper/calibrations or Infleqtion-supplied model",
+    "use_now": "exploratory break-even and sensitivity only"
+  }
+}
