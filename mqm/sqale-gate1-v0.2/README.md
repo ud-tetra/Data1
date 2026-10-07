@@ -1,3 +1,16 @@
+# IMPORTANT v0.3 SCOPE REPAIR
+
+**Gate 1 direct post-loss receipt is now FROZEN / NO-GO.**
+
+The 176-pattern typed-loss result assumes all four central syndrome bits remain available after the atom is lost. When the syndrome is restricted to central checks that physically avoid the missing atom, every loss location has logical ambiguity.
+
+See:
+`protocol/POST_LOSS_CENTRAL_RECEIPT_NO_GO_v0.1_LOCK.md`
+
+The exact MQM algebra, K4 firewall, and full-syndrome code-capacity theorem remain valid. The external hardware ask is withdrawn until a pre-loss history or other physical receipt mechanism closes the information gap.
+
+---
+
 # MQM × Sqale Gate 1 — public eight-site block release v0.2
 
 **Status:** public runnable algebra + frozen kill-test protocol  
