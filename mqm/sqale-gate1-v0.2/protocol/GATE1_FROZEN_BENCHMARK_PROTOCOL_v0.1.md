@@ -5,57 +5,53 @@
 
 ## Question
 
-On the same eight physical sites, does the MQM `[[8,1,3,3]]` typed-loss receipt outperform the published Sqale parity-reconstruction/postselection baseline **after counting the extra receipt circuit, Rydberg two-qubit error, moves, loss, and discarded shots**?
+On the same eight physical sites, does the MQM `[[8,1,3,3]]` typed-loss receipt outperform published Sqale parity reconstruction/postselection **after counting the extra receipt circuit, Rydberg two-qubit error, moves, loss, and discarded shots**?
 
 ## Compatibility rule
 
-The two codes are compared in **separate encoding runs**.
+Compare the two codes in **separate encoding runs**.
 
-MQM gauge measurements are **not** overlaid on a live `[[8,3,2]]` memory state. Such an overlay requires a separate compatibility/code-switching proof.
+MQM gauge measurements are not overlaid on a live `[[8,3,2]]` memory state. That would require a separate compatibility/code-switch proof.
 
-Sqale's `[[8,3,3]] / [[8,3,2]]` encoding remains the memory baseline.
+Sqale `[[8,3,3]] / [[8,3,2]]` remains the memory baseline.
 
-## Frozen metrics
+## Frozen primary metrics
 
-At each frozen physical-noise point report:
+At each frozen noise point report:
 1. kept-shot yield;
 2. conditional logical error among kept shots;
 3. total success = kept and logically correct;
 4. physical two-qubit gate count;
-5. move count / total moved-atom distance if available;
+5. move count / moved distance where available;
 6. discarded/replayed shot count;
-7. decoder outcomes: `CORRECT`, `HOLD/REJECT`, `LOGICAL_ERROR`.
+7. decoder outcomes `CORRECT / HOLD / LOGICAL_ERROR`.
 
-## Primary comparison
+## Primary decision
 
 Plot logical error vs kept-shot yield.
 
 MQM passes only if its Pareto curve strictly improves the Sqale baseline at at least one nontrivial operating point:
-- higher kept-shot yield at equal-or-lower logical error; **or**
+- higher kept-shot yield at equal-or-lower logical error; or
 - lower logical error at equal-or-higher kept-shot yield.
 
 ## Stop rule
 
-If MQM does not beat parity reconstruction + postselection after the hardware receipt overhead is charged under the frozen Sqale noise model:
+If MQM does not beat parity reconstruction + postselection after receipt overhead is charged under the frozen Sqale model:
 
 **STOP THIS SQALE INTEGRATION BRANCH.**
 
-Do not rescue the claim by retuning thresholds after seeing the result.
+No threshold or decoder retuning after target exposure.
 
 ## Noise-model rule
 
-Use only public/published Sqale parameters or parameters supplied directly by Infleqtion.
+Use only published Sqale parameters or parameters supplied directly by Infleqtion.
 
-The September 2026 30-logical-qubit technical post does not yet publish the full physical error model. Until the promised paper/calibration data are available, Gate-1 numerical runs using the older Sqale model are **exploratory**, not confirmatory.
+The September 2026 30L post does not yet publish the full physical error model. Until the promised paper/calibration data are public, hardware-noise runs using the older public model remain **exploratory**.
 
-## Reproduction request gate
+## External reproduction ask
 
-Minimal external run should use:
-- eight data atoms, one block per encoding;
-- declared logical state;
-- one preregistered known atom loss;
-- one additional X-readout corruption / equivalent Pauli fault;
-- Sqale parity reconstruction vs MQM typed-loss receipt;
-- success criteria frozen in advance.
+Do not send the hardware ask until the MQM receipt is compiled into either:
+1. an eight-data-atom destructive receipt requiring no hidden ancillas; or
+2. an explicit ancilla circuit with all added atoms, CZs, moves, measurements, replay, and loss counted.
 
-If MQM requires extra ancillas for the receipt, those atoms and gates are counted. “Eight atoms” may not hide receipt ancillas.
+The phrase “eight atoms” must not hide receipt ancillas.
